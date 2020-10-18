@@ -1,0 +1,5 @@
+﻿  Mario.cpp
+c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(30): warning C4244: 'initializing': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(317): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(335): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+  05-ScenceManager.vcxproj -> C:\Nhap mon Game\gamedev-intro-tutorials-master\Debug\05-ScenceManager.exe
