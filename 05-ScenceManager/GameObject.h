@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <d3dx9.h>
 #include <vector>
-
+#include "Base.h"
 #include "Sprites.h"
 #include "Animations.h"
 
@@ -44,7 +44,7 @@ struct CCollisionEvent
 class CGameObject
 {
 public:
-
+	GType type;
 	float x;
 	float y;
 
@@ -73,7 +73,7 @@ public:
 	void RenderBoundingBox();
 
 	void SetAnimationSet(LPANIMATION_SET ani_set) { animation_set = ani_set; }
-
+	GType GetType() { return type; }
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
 	void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
 	void FilterCollision(

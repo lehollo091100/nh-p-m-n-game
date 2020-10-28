@@ -71,7 +71,34 @@ void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top
 	r.top = top;
 	r.right = right;
 	r.bottom = bottom;
+	DebugOut(L"cam %f\n", x - cam_x);
 	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+}
+void CGame::DrawFilpX(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
+{
+	RECT r;
+	r.top = top;
+	r.bottom = bottom;
+	r.right = right;
+	r.left = left;
+	float W = right - left;
+	D3DXMATRIX AA, BB;
+	spriteHandler->GetTransform(&AA);
+	D3DXMatrixTransformation2D(
+		&BB, //output
+		&D3DXVECTOR2(x, 0),//tam scale
+		0.0f, //goc scale
+		&D3DXVECTOR2(-1.0f, 1.0f),//huong scale them dau - truoc truc can flip thi flip theo truc do 
+		NULL, //tam xoay
+		0.0f, //goc xoay
+		NULL);
+	D3DXMATRIX CC = AA * BB;
+	spriteHandler->SetTransform(&CC);
+	x -= W;//dich chuyen phan bi lat nguoc ve lai vi tri cu
+	DebugOut(L"%f cam %f\n", W, x- cam_x);
+	D3DXVECTOR3 p(floor(x - cam_x), floor(y - cam_y), 0);
+	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->SetTransform(&AA);
 }
 
 int CGame::IsKeyDown(int KeyCode)

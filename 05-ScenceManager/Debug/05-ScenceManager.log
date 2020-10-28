@@ -1,5 +1,7 @@
-﻿  Mario.cpp
-c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(30): warning C4244: 'initializing': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(317): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\nhap mon game\gamedev-intro-tutorials-master\05-scencemanager\mario.cpp(335): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-  05-ScenceManager.vcxproj -> C:\Nhap mon Game\gamedev-intro-tutorials-master\Debug\05-ScenceManager.exe
+﻿  Game.cpp
+c:\users\admin\documents\github\nh-p-m-n-game\05-scencemanager\mario.h(6): warning C4005: 'MARIO_WALKING_SPEED': macro redefinition
+  c:\users\admin\documents\github\nh-p-m-n-game\05-scencemanager\mariogeneral.h(4): note: see previous definition of 'MARIO_WALKING_SPEED'
+c:\users\admin\documents\github\nh-p-m-n-game\05-scencemanager\mario.h(59): warning C4005: 'MARIO_ANI_DIE': macro redefinition
+  c:\users\admin\documents\github\nh-p-m-n-game\05-scencemanager\mariogeneral.h(86): note: see previous definition of 'MARIO_ANI_DIE'
+c:\users\admin\documents\github\nh-p-m-n-game\05-scencemanager\game.cpp(84): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  05-ScenceManager.vcxproj -> C:\Users\Admin\Documents\GitHub\nh-p-m-n-game\Debug\05-ScenceManager.exe

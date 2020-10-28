@@ -1,21 +1,23 @@
 #pragma once
 #include "GameObject.h"
 #include "Utils.h"
+#include "MarioGeneral.h"
 
-#define MARIO_WALKING_SPEED		0.01f 
+#define MARIO_WALKING_SPEED		0.04f 
 #define MARIO_AX				0.04f
 #define MARIO_JUMP_SPEED_Y		0.5f
 #define MARIO_JUMP_DEFLECT_SPEED 0.2f
 #define MARIO_GRAVITY			0.0015f
 #define MARIO_DIE_DEFLECT_SPEED	 0.5f
+#define MARIO_ACCELERATE		0.01f
+#define MARIO_WALKING_MAXSPEED	0.1f
 
 #define MARIO_STATE_IDLE			0
 #define MARIO_STATE_WALKING_RIGHT	100
 #define MARIO_STATE_WALKING_LEFT	200
 #define MARIO_STATE_JUMP			300
 #define MARIO_STATE_DIE				400
-#define MARIO_STATE_RUN_RIGHT       500
-#define MARIO_STATE_RUN_LEFT        600
+#define MARIO_STATE_RUNNING			500
 //#define MARIO_STATE_TAIL			700
 #define MARIO_STATE_ATTACK_TAIL		800
 #define MARIO_STATE_SIT				900
@@ -71,20 +73,22 @@
 
 class CMario : public CGameObject
 {
+public:
 	int level;
 	int untouchable;
 	DWORD untouchable_start;
 	float start_x;			// initial position of Mario at scene
 	float start_y;
-	
+	int ani;
 public:
-	bool IsWalkingR, IsSpeedup, IsWalkingL, IsSitting, IsRollback, IsSlowDown;
+	bool IsWalkingR, IsSpeedup, IsWalkingL, IsSitting, IsRollback, IsSlowDown, IsFalling, isSpeedUping , IsMaxspeed;
 	bool IsJumping;
-	int nxbackup = 1;
-	float maxSpeed;
+	bool IsWalking;
+	int nxbackup ;
 	DWORD RollbackDt;
 	DWORD RollBackTime;
 	DWORD rightdown,leftdown;
+	float vx_backup;
 
 
 public:
@@ -92,11 +96,31 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
 
+	void DecreaseSpeed(float a);
 	void SetState(int state);
 	void SetLevel(int l) { level = l; }
+	int GetLevel() { return level; };
+	void SetIsFalling(bool f)
+	{
+		IsFalling = f;
+	}
+	float Getvx() {
+		return vx;
+	}
+	bool GetSpeeUp() { return IsSpeedup; }
+	bool GetJump() { return IsJumping; }
+	void SetSpeedUp(bool statespeed) { IsSpeedup = statespeed; }
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount(); }
 
 	void Reset();
 
+
+	void Go();
+	void Left();
+	void Right();
+	void Jump();
+	void Idle();
+	void Sit();
+	void Rollback();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };
